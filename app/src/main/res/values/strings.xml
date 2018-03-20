@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Chiffrement par substitution</string>
+
+    <string name="hint_input_text">Appuyer pour saisir du texte</string>
+    <string name="text_encrypt">Chiffrer</string>
+    <string name="text_decrypt">Déchiffrer</string>
+    <string name="hint_output_text">Le résultat s\'affichera ici</string>
+    <string name="text_current_key">Clé : %05d</string>
+    <string name="text_copy">Copier</string>
+
+    <string name="text_connectivity_error">Vous êtes hors connexion.</string>
+    <string name="text_server_error">Le serveur est actuellement en maintenance. Réessayez plus tard.</string>
+    <string name="text_copied_output">Copié!</string>
+
+    <string name="text_activate_wifi">Activer le Wifi</string>
+
+    <string name="clipboard_encrypted_text">Texte chiffré</string>
+</resources>

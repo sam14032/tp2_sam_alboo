@@ -1,0 +1,136 @@
+<android.support.constraint.ConstraintLayout
+    android:id="@+id/rootView"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ca.csf.mobile1.tp2.activity.MainActivity">
+
+    <View
+        android:id="@+id/top_panel"
+        android:layout_width="0dp"
+        android:layout_height="168dp"
+        android:background="@android:color/white"
+        android:elevation="2dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <EditText
+        android:id="@+id/input_edittext"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@null"
+        android:elevation="2dp"
+        android:gravity="top"
+        android:hint="@string/hint_input_text"
+        android:inputType="textMultiLine"
+        android:lines="4"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <Button
+        android:id="@+id/encrypt_button"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:drawablePadding="16dp"
+        android:drawableStart="@drawable/ic_lock"
+        android:elevation="2dp"
+        android:text="@string/text_encrypt"
+        app:layout_constraintBottom_toBottomOf="@+id/top_panel"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/decrypt_button"/>
+
+    <Button
+        android:id="@+id/decrypt_button"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:drawablePadding="16dp"
+        android:drawableStart="@drawable/ic_unlock"
+        android:elevation="2dp"
+        android:text="@string/text_decrypt"
+        app:layout_constraintBottom_toBottomOf="@+id/top_panel"
+        app:layout_constraintLeft_toRightOf="@+id/encrypt_button"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <ProgressBar
+        android:id="@+id/progressbar"
+        style="@android:style/Widget.Material.Light.ProgressBar.Horizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/top_panel"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/select_key_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        app:fabSize="normal"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/decrypt_button"
+        app:srcCompat="@drawable/ic_key"/>
+
+    <TextView
+        android:id="@+id/output_textview"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/white"
+        android:elevation="2dp"
+        android:freezesText="true"
+        android:paddingBottom="32dp"
+        android:paddingEnd="16dp"
+        android:paddingStart="16dp"
+        android:paddingTop="16dp"
+        android:text="@string/hint_output_text"
+        android:textIsSelectable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/top_panel"/>
+
+    <ImageButton
+        android:id="@+id/copy_button"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/text_copy"
+        app:srcCompat="@drawable/ic_copy"
+        android:elevation="2dp"
+        app:layout_constraintBottom_toBottomOf="@+id/output_textview"
+        app:layout_constraintRight_toRightOf="@+id/output_textview"
+        android:adjustViewBounds="true"/>
+
+    <TextView
+        android:id="@+id/current_key_textview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:elevation="2dp"
+        android:freezesText="true"
+        android:gravity="bottom|start"
+        android:text="@string/text_current_key"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="@+id/output_textview"
+        app:layout_constraintLeft_toLeftOf="@+id/output_textview"
+        app:layout_constraintRight_toRightOf="@+id/output_textview"/>
+
+</android.support.constraint.ConstraintLayout>

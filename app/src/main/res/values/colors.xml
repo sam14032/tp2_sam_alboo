@@ -1,0 +1,5 @@
+<resources>
+    <color name="colorPrimary">#009688</color>
+    <color name="colorPrimaryDark">#00796b</color>
+    <color name="colorAccent">#ffea00</color>
+</resources>

@@ -1,0 +1,10 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="ca.csf.mobile1.utils">
+
+    <application android:theme="@style/AppTheme">
+
+        <activity android:name="android.support.v7.app.AppCompatActivity" />
+
+    </application>
+
+</manifest>

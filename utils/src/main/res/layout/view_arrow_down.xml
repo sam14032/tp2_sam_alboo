@@ -1,0 +1,11 @@
+<ImageButton xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Widget.AppCompat.Button.Borderless"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_columnWeight="1"
+    android:adjustViewBounds="true"
+    android:scaleType="centerCrop"
+    app:srcCompat="@drawable/ic_arrow_down"
+    tools:ignore="ContentDescription" />
