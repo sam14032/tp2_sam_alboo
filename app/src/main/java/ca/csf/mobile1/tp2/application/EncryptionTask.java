@@ -15,6 +15,7 @@ public class EncryptionTask extends AsyncTask<String,Void,StringBuilder> {
     private StringBuilder encryptedMessage;
     public EncryptionTask() {
         encryptionListenerList = new LinkedList<>();
+        encryptedMessage = new StringBuilder();
     }
 
     @Override
@@ -26,26 +27,28 @@ public class EncryptionTask extends AsyncTask<String,Void,StringBuilder> {
     @Override
     protected void onPostExecute(StringBuilder stringBuilder) {
         super.onPostExecute(stringBuilder);
-        for (EncryptionListener encryptionListener : encryptionListenerList )
-        {
-            encryptionListener.notifyEncriptionListener(encryptedMessage);
-        }
+        notifyEndOfExecution(stringBuilder);
     }
 
     private void EncryptWord(String words)
     {
-        StringBuilder stringBuilder = new StringBuilder();
-
-        encryptedMessage = stringBuilder;
+        encryptedMessage.append(words);
     }
 
 
     public void registerListener(EncryptionListener encryptionListener){encryptionListenerList.add(encryptionListener);}
     public void removeListener(EncryptionListener encryptionListener){encryptionListenerList.remove(encryptionListener);}
 
+    public void notifyEndOfExecution(StringBuilder encryptedMessage)
+    {
+        for (EncryptionListener encryptionListener : encryptionListenerList )
+        {
+            encryptionListener.notifyEncriptionListener(encryptedMessage);
+        }
+    }
     public interface EncryptionListener
     {
-        public void notifyEncriptionListener(StringBuilder stringBuilder);
+        public void notifyEncriptionListener(StringBuilder message);
     }
 
 }

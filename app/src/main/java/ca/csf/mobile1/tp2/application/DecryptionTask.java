@@ -15,30 +15,31 @@ public class DecryptionTask extends AsyncTask<String, Void, StringBuilder>
     StringBuilder decryptedMessage;
     public DecryptionTask() {
         decryptionListenerList = new LinkedList<>();
+        decryptedMessage = new StringBuilder();
     }
 
     @Override
     protected StringBuilder doInBackground(String... strings) {
-
-        return null;
+        decryptMessage(strings[0]);
+        return decryptedMessage;
     }
 
     @Override
     protected void onPostExecute(StringBuilder stringBuilder) {
         super.onPostExecute(stringBuilder);
-        notifyEndOfExecution();
+        notifyEndOfExecution(stringBuilder);
     }
 
     private void decryptMessage(String cryptedMessage)
     {
-        StringBuilder decryptedMessage = null;
+        StringBuilder decryptedMessage = new StringBuilder();
         this.decryptedMessage = decryptedMessage;
     }
 
-    public void addDecryterListener(DecryptionListener listener){decryptionListenerList.add(listener);}
+    public void registerListener(DecryptionListener listener){decryptionListenerList.add(listener);}
     public void removeDecrypterListener(DecryptionListener listener){decryptionListenerList.remove(listener);}
 
-    private void notifyEndOfExecution()
+    private void notifyEndOfExecution(StringBuilder decryptedMessage)
     {
         for (DecryptionListener decryptionListener : decryptionListenerList)
         {
