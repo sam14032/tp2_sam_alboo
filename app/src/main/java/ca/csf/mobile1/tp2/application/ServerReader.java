@@ -26,6 +26,12 @@ public class ServerReader extends AsyncTask<Integer,Void,StringBuilder> {
         return null;
     }
 
+    @Override
+    protected void onPostExecute(StringBuilder stringBuilder) {
+        super.onPostExecute(stringBuilder);
+
+    }
+
     public StringBuilder fetchDataFromServer(String address)
     {
         try
@@ -35,9 +41,9 @@ public class ServerReader extends AsyncTask<Integer,Void,StringBuilder> {
             Response response = client.newCall(request).execute();
             if (response.isSuccessful())
             {
-                String hson = response.body().string();
+                String json = response.body().string();
                 ObjectMapper objectMapper = service.getObjectMapper();
-
+                objectMapper.readValue(json,JsonDecryptor.class);
             }
         }
         catch (IOException e)

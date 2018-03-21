@@ -9,10 +9,13 @@ import java.util.List;
  * Created by Samuel on 2018-03-19.
  */
 
-public class EncryptionTask extends AsyncTask<String,Void,StringBuilder> {
+public class EncryptionTask extends AsyncTask<String,Void,StringBuilder> implements JsonDecryptor.JsonListener {
 
-    List<EncryptionListener> encryptionListenerList;
+    private List<EncryptionListener> encryptionListenerList;
     private StringBuilder encryptedMessage;
+    private String[] inputChars;
+    private String[] outputChars;
+
     public EncryptionTask() {
         encryptionListenerList = new LinkedList<>();
         encryptedMessage = new StringBuilder();
@@ -46,6 +49,13 @@ public class EncryptionTask extends AsyncTask<String,Void,StringBuilder> {
             encryptionListener.notifyEncriptionListener(encryptedMessage);
         }
     }
+
+    @Override
+    public void notifyJsonDecryption(String[] outputChars, String[] inputChars) {
+        this.inputChars = inputChars;
+        this.outputChars = outputChars;
+    }
+
     public interface EncryptionListener
     {
         public void notifyEncriptionListener(StringBuilder message);
