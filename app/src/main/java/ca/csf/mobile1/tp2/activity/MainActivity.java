@@ -14,11 +14,12 @@ import android.widget.TextView;
 import java.util.Random;
 
 import ca.csf.mobile1.tp2.R;
+import ca.csf.mobile1.tp2.application.DecryptionTask;
 import ca.csf.mobile1.tp2.application.EncryptionTask;
 import ca.csf.mobile1.utils.view.CharactersFilter;
 import ca.csf.mobile1.utils.view.KeyPickerDialog;
 
-public class MainActivity extends Tp2Activity implements EncryptionTask.EncryptionListener {
+public class MainActivity extends Tp2Activity implements EncryptionTask.EncryptionListener,DecryptionTask.DecryptionListener {
 
     private static final int KEY_LENGTH = 5;
     private static final int MAX_KEY_VALUE = (int) Math.pow(10, KEY_LENGTH) - 1;
@@ -29,8 +30,10 @@ public class MainActivity extends Tp2Activity implements EncryptionTask.Encrypti
     private TextView currentKeyTextView;
     private ProgressBar progressBar;
     private Button encryptButton;
+    private Button decryptButton;
 
     EncryptionTask encryptionTask = new EncryptionTask();
+    DecryptionTask decryptionTask = new DecryptionTask();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,9 +54,20 @@ public class MainActivity extends Tp2Activity implements EncryptionTask.Encrypti
         currentKeyTextView = findViewById(R.id.current_key_textview);
         encryptButton = findViewById(R.id.encrypt_button);
         encryptButton.setOnClickListener(encryptWord);
+        decryptButton = findViewById(R.id.decrypt_button);
+        decryptButton.setOnClickListener(decryptWord);
     }
 
     private View.OnClickListener encryptWord = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            progressBar.setVisibility(View.VISIBLE);
+            String input = inputEditText.getText().toString();
+            encryptionTask.execute(input);
+        }
+    };
+
+    private  View.OnClickListener decryptWord = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             progressBar.setVisibility(View.VISIBLE);
@@ -71,6 +85,12 @@ public class MainActivity extends Tp2Activity implements EncryptionTask.Encrypti
     @Override
     public void notifyEncriptionListener(StringBuilder encryptedWord) {
         outputTextView.setText(encryptedWord);
+        progressBar.setVisibility(View.INVISIBLE);
+    }
+
+    @Override
+    public void notifyDecriptionListener(StringBuilder message) {
+        outputTextView.setText(message);
         progressBar.setVisibility(View.INVISIBLE);
     }
 }
